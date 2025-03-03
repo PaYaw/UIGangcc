@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สร้างแก๊งใหม่</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gang-container">
+        <h2> สร้างแก๊งใหม่</h2>
+        
+        <label for="gang-name">📛 ชื่อแก๊ง</label>
+        <input type="text" id="gang-name" placeholder="ใส่ชื่อแก๊ง...">
+
+        <label>🖼️ โลโก้แก๊ง</label>
+        <input type="file" id="logo-upload" accept="image/*">
+        <div class="logo-preview">
+            <img id="gang-logo" src="default-logo.png" alt="โลโก้แก๊ง">
+        </div>
+
+        <label>👥 เลือกสมาชิกเริ่มต้น</label>
+        <select id="member-list">
+            <option value="">-- เลือกสมาชิก --</option>
+            <option value="1">Player1</option>
+            <option value="2">Player2</option>
+            <option value="3">Player3</option>
+        </select>
+        <button onclick="addMember()">➕ เพิ่มสมาชิก</button>
+
+        <ul id="member-display"></ul>
+
+        <button class="create-button" onclick="createGang()">✅ สร้างแก๊ง</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
