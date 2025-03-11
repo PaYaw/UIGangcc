@@ -1,38 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สร้างแก๊งใหม่</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Taxi Company UI</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .container {
+            width: 400vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .screen {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #111, #222);
+            box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.6);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .leaderboard-container, .status-container, .customer-container {
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px gold;
+            position: relative;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        .leaderboard-header, .status-header, .customer-header {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .leaderboard, .status-list, .customer-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .player-card, .status-card, .customer-card {
+            background: #222;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.5);
+            min-width: 200px;
+        }
+        .player-card img, .status-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid gold;
+        }
+    </style>
 </head>
 <body>
-    <div class="gang-container">
-        <h2> สร้างแก๊งใหม่</h2>
-        
-        <label for="gang-name">📛 ชื่อแก๊ง</label>
-        <input type="text" id="gang-name" placeholder="ใส่ชื่อแก๊ง...">
-
-        <label>🖼️ โลโก้แก๊ง</label>
-        <input type="file" id="logo-upload" accept="image/*">
-        <div class="logo-preview">
-            <img id="gang-logo" src="default-logo.png" alt="โลโก้แก๊ง">
+    <div class="container" id="container">
+        <div class="screen" id="screen1">
+            <h2>ยินดีต้อนรับสู่ BIAO TOWN.</h2>
+            <p>เลือกเส้นทางของคุณด้านล่าง</p>
+            <button onclick="nextScreen()">เริ่มต้นการทำงาน</button>
         </div>
+        <div class="screen" id="screen2">
+            <div class="leaderboard-container">
+                <div class="leaderboard-header">กระดานอันดับในการทำงาน</div>
+                <div class="leaderboard">
+                    <div class="player-card"><img src="profile1.jpg"><h3>คุณ ยาว ที่หล่อที่สุด</h3><p>#1 | เข้าเวร: 08:00 | ทำงานแล้ว: 116 ชม. | งานสำเร็จ: 950</p></div>
+                    <div class="player-card"><img src="profile2.jpg"><h3>คุณ ที่สวยน้อยกว่า ยาว</h3><p>#2 | เข้าเวร: 09:30 | ทำงานแล้ว: 15 ชม. | งานสำเร็จ: 115</p></div>
+                    <div class="player-card"><img src="profile3.jpg"><h3>คุณ สมชาย ชาติณี</h3><p>#3 | เข้าเวร: 10:00 | ทำงานแล้ว: 14 ชม. | งานสำเร็จ: 112</p></div>
+                    <div class="player-card"><img src="profile4.jpg"><h3>คุณ บอย</h3><p>#4 | เข้าเวร: 07:00 | ทำงานแล้ว: 17 ชม. | งานสำเร็จ: 18</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="screen" id="screen3">
+            <div class="status-container">
+                <div class="status-header">สถานะพนักงาน</div>
+                <div class="status-list">
+                    <div class="status-card"><img src="profile1.jpg"><h3>คุณ ยาว</h3><p class="status available">ว่าง</p><p>เข้าเวร: 08:00 | ทำงานแล้ว: 6 ชม. | งานสำเร็จ: 20</p></div>
+                    <div class="status-card"><img src="profile2.jpg"><h3>คุณ ที่สวยน้อยกว่า ยาว</h3><p class="status available">ว่าง</p><p>เข้าเวร: 09:30 | ทำงานแล้ว: 5 ชม. | งานสำเร็จ: 15</p></div>
+                    <div class="status-card"><img src="profile3.jpg"><h3>คุณ สมชาย เพื่อนสมหญิง</h3><p class="status busy">ติดงาน - ไปรับของ</p><p>เข้าเวร: 10:00 | ทำงานแล้ว: 4 ชม. | งานสำเร็จ: 12</p></div>
+                    <div class="status-card"><img src="profile4.jpg"><h3>คุณ บอย เพื่อนรัก</h3><p class="status busy">ติดงาน - ส่งผู้เล่น</p><p>เข้าเวร: 07:00 | ทำงานแล้ว: 7 ชม. | งานสำเร็จ: 18</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="screen" id="screen4">
+            <div class="customer-container">
+                <div class="customer-header">ข้อมูลลูกค้า</div>
+                
+                <!-- ตัวอย่างข้อมูลลูกค้า -->
+                <div class="customer-card">
+                    <h3>คุณ สมหมาย (เบอร์: 123)</h3>
+                    <p><strong>คำสั่ง:</strong> ให้ไปซื้อของ</p>
+                    <p>สินค้า: น้ำดื่ม 2 ขวด, ขนม 3 ห่อ</p>
+                    <p>ยอดเงิน: 250 บาท</p>
+                    <p><strong>สถานที่:</strong> ที่ฟาร์มเมืองบน</p>
+                </div>
 
-        <label>👥 เลือกสมาชิกเริ่มต้น</label>
-        <select id="member-list">
-            <option value="">-- เลือกสมาชิก --</option>
-            <option value="1">Player1</option>
-            <option value="2">Player2</option>
-            <option value="3">Player3</option>
-        </select>
-        <button onclick="addMember()">➕ เพิ่มสมาชิก</button>
+                <div class="customer-card">
+                    <h3>คุณ สมยศ (เบอร์: 5678)</h3>
+                    <p><strong>คำสั่ง:</strong> ไปรับส่งของ</p>
+                    <p>สถานที่: การาจคาสิโน</p>
+                </div>
 
-        <ul id="member-display"></ul>
-
-        <button class="create-button" onclick="createGang()">✅ สร้างแก๊ง</button>
+                <div class="customer-card">
+                    <h3>คุณ สมหญิง (เบอร์: 9012)</h3>
+                    <p><strong>คำสั่ง:</strong> ไปส่งผู้เล่น</p>
+                    <p>รับที่: โรงพยาบาล</p>
+                    <p>ส่งที่: คุก</p>
+                </div>
     </div>
-
-    <script src="script.js"></script>
+    <script>
+        let currentScreen = 0;
+        const container = document.getElementById("container");
+        
+        document.addEventListener("wheel", (event) => {
+            if (event.deltaY > 0 && currentScreen < 3) {
+                currentScreen++;
+            } else if (event.deltaY < 0 && currentScreen > 0) {
+                currentScreen--;
+            }
+            updateScreens();
+        });
+        
+        function updateScreens() {
+            container.style.transform = `translateX(-${currentScreen * 100}vw)`;
+        }
+        
+        function nextScreen() {
+            currentScreen = 1;
+            updateScreens();
+        }
+    </script>
 </body>
 </html>
